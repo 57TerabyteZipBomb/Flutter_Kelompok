@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_kelompok/routes/routes.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
@@ -24,7 +25,7 @@ class LoginController extends GetxController {
 
     if (user == validUsername && pass == validPassword) {
       loginStatus.value = "good jop";
-      //add page change here probably
+      Get.offNamed(AppRoutes.dashboard);
     } else {
       loginStatus.value = "die";
     }
