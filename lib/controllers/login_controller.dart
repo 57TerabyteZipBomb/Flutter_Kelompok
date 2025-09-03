@@ -7,7 +7,6 @@ class LoginController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
 
   // Rx variables
-  var isPasswordHidden = true.obs;
   var loginStatus = ''.obs;
 
   // Data stuffs
@@ -15,9 +14,6 @@ class LoginController extends GetxController {
   final String validPassword = "Galih";
 
   // Most of this should be self explanitory
-  void togglePasswordVisibility() {
-    isPasswordHidden.value = !isPasswordHidden.value;
-  }
 
   void login() {
     final user = usernameController.text.trim();
