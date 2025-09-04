@@ -2,6 +2,7 @@ import 'package:flutter_kelompok/models/todo_models.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
+  //hardcoded initial stuff
   var TodoList = <Lists>[
     Lists(
       title: "Tugas Mobile Dev",

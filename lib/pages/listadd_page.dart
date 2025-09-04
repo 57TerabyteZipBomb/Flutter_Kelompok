@@ -7,6 +7,9 @@ import 'package:flutter_kelompok/models/todo_models.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../componenets/widget_ButtonNew.dart';
+import '../componenets/widget_textfieldNew.dart';
+
 class ListaddPage extends StatelessWidget {
   ListaddPage({super.key});
 
@@ -20,42 +23,36 @@ class ListaddPage extends StatelessWidget {
     final dueController = TextEditingController();
 
     return Scaffold(
-      appBar: AppBar(title: Text("Add List"), centerTitle: true),
+      appBar: AppBar(title: const Text("Add List"), centerTitle: true),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            MyEditingTextField(
+            CustomTextField(
               textEditingController: titleController,
               label: 'List title',
             ),
-
-            const SizedBox(height: 30),
-
-            MyEditingTextField(
+            const SizedBox(height: 20),
+            CustomTextField(
               textEditingController: sumController,
               label: 'Summary',
             ),
-
-            const SizedBox(height: 30),
-
-            MyEditingTextField(
+            const SizedBox(height: 20),
+            CustomTextField(
               textEditingController: urgenController,
               label: 'Urgency',
             ),
-
-            const SizedBox(height: 30),
-
-            MyEditingTextField(
+            const SizedBox(height: 20),
+            CustomTextField(
               textEditingController: dueController,
               label: 'Due Date',
             ),
-
             const SizedBox(height: 30),
-
-            MyEditingButton(
+            CustomButton(
               text: 'Add new List',
-              textcolor: Colors.cyanAccent,
+              textcolor: Colors.white,
+              bgcolor: Colors.blueAccent,
               onPressed: () {
                 editController.addList(
                   Lists(
@@ -63,10 +60,9 @@ class ListaddPage extends StatelessWidget {
                     summary: sumController.text,
                     urgency: urgenController.text,
                     due: dueController.text,
-                    isClear: false
+                    isClear: false,
                   ),
                 );
-
                 Get.back();
               },
             ),

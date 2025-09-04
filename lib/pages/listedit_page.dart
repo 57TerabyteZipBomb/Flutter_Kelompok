@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_kelompok/componenets/widget_ButtonNew.dart';
 import 'package:flutter_kelompok/componenets/widget_EditButton.dart';
 import 'package:flutter_kelompok/componenets/widget_EditTextField.dart';
+import 'package:flutter_kelompok/componenets/widget_textfieldNew.dart';
 import 'package:flutter_kelompok/controllers/listedit_controller.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -27,46 +29,44 @@ class ListEditPage extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(title: Text("Edit data"), centerTitle: true),
+      appBar: AppBar(title: const Text("Edit Task"), centerTitle: true),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16), // consistent spacing
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            MyEditingTextField(
+            CustomTextField(
               textEditingController: titleController,
               label: 'Title',
               onChanged: editController.updateTitle,
             ),
+            const SizedBox(height: 20),
 
-            const SizedBox(height: 30),
-
-            MyEditingTextField(
+            CustomTextField(
               textEditingController: summController,
               label: 'Summary',
               onChanged: editController.updateSumm,
             ),
+            const SizedBox(height: 20),
 
-            const SizedBox(height: 30),
-
-            MyEditingTextField(
+            CustomTextField(
               textEditingController: urgencyController,
               label: 'Urgency',
               onChanged: editController.updateUrgency,
             ),
+            const SizedBox(height: 20),
 
-            const SizedBox(height: 30),
-
-            MyEditingTextField(
+            CustomTextField(
               textEditingController: dueController,
               label: 'Due Date',
               onChanged: editController.updateDate,
             ),
-
             const SizedBox(height: 30),
 
-            MyEditingButton(
+            CustomButton(
               text: 'Apply Edit',
               textcolor: Colors.white,
+              bgcolor: Colors.blueAccent,
               onPressed: () {
                 editController.saveChanges();
                 Get.back();

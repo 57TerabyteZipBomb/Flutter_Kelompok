@@ -16,7 +16,10 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        appBar: AppBar(title: Text("Dashboard")),
+        appBar: AppBar(
+          title: Text("Dashboard", style: TextStyle(fontWeight: FontWeight.bold),),
+          centerTitle: true,
+          backgroundColor: Colors.blue,),
         drawer: Drawer(
           child: ListView(
             children: [
