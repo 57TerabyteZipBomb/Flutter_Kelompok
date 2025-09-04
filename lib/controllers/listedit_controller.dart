@@ -14,17 +14,15 @@ class ListeditController extends GetxController {
 
     final args = Get.arguments;
     if (args is Map<String, dynamic> &&
-        args['player'] is Lists &&
+        args['title'] is Lists &&
         args['index'] is int) {
       index = args['index'] as int;
       list = Rxn<Lists>();
-      list.value = args['player'] as Lists;
+      list.value = args['title'] as Lists;
     } else {
-      // Provide fallback/defaults or handle error
       index = 0;
       list = Rxn<Lists>();
       list.value = null;
-      // Optionally, show an error or navigate back
     }
   }
 
