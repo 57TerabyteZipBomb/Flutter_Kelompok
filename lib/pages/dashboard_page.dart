@@ -86,16 +86,18 @@ class DashboardPage extends StatelessWidget {
         body: pages[menuController.selectedIndex.value],
 
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.blue,
           type: BottomNavigationBarType.fixed,
           currentIndex: menuController.selectedIndex.value,
           onTap: menuController.changeTab,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.black,
+          selectedLabelStyle: TextStyle(color: Colors.white),
+          unselectedLabelStyle: TextStyle(color: Colors.white), 
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.list), label: 'History'),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
           ],
         ),
       ),
