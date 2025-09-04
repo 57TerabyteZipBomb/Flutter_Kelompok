@@ -5,4 +5,5 @@ class AppRoutes {
   static const String profile = "/profile";
   static const String history = "/history";
   static const String listedit = "/listedit";
+  static const String listadd = "/listadd";
 }

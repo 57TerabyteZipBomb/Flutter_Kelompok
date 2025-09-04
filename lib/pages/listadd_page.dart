@@ -2,56 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_kelompok/componenets/widget_EditButton.dart';
 import 'package:flutter_kelompok/componenets/widget_EditTextField.dart';
-import 'package:flutter_kelompok/controllers/listedit_controller.dart';
+import 'package:flutter_kelompok/controllers/home_controller.dart';
+import 'package:flutter_kelompok/models/todo_models.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-class ListEditPage extends StatelessWidget {
-  ListEditPage({super.key});
+class ListaddPage extends StatelessWidget {
+  ListaddPage({super.key});
 
-  final editController = Get.find<ListeditController>();
+  final editController = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
-    final titleController = TextEditingController(
-      text: editController.list.value?.title,
-    );
-    final summController = TextEditingController(
-      text: editController.list.value?.summary,
-    );
-    final urgencyController = TextEditingController(
-      text: editController.list.value?.urgency,
-    );
-    final dueController = TextEditingController(
-      text: editController.list.value?.due,
-    );
+    final titleController = TextEditingController();
+    final sumController = TextEditingController();
+    final urgenController = TextEditingController();
+    final dueController = TextEditingController();
 
     return Scaffold(
-      appBar: AppBar(title: Text("Edit data"), centerTitle: true),
+      appBar: AppBar(title: Text("Add List"), centerTitle: true),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             MyEditingTextField(
               textEditingController: titleController,
-              label: 'Title',
-              onChanged: editController.updateTitle,
+              label: 'List title',
             ),
 
             const SizedBox(height: 30),
 
             MyEditingTextField(
-              textEditingController: summController,
+              textEditingController: sumController,
               label: 'Summary',
-              onChanged: editController.updateSumm,
             ),
 
             const SizedBox(height: 30),
 
             MyEditingTextField(
-              textEditingController: urgencyController,
+              textEditingController: urgenController,
               label: 'Urgency',
-              onChanged: editController.updateUrgency,
             ),
 
             const SizedBox(height: 30),
@@ -59,16 +49,24 @@ class ListEditPage extends StatelessWidget {
             MyEditingTextField(
               textEditingController: dueController,
               label: 'Due Date',
-              onChanged: editController.updateDate,
             ),
 
             const SizedBox(height: 30),
 
             MyEditingButton(
-              text: 'Apply Edit',
-              textcolor: Colors.white,
+              text: 'Add new List',
+              textcolor: Colors.cyanAccent,
               onPressed: () {
-                editController.saveChanges();
+                editController.addList(
+                  Lists(
+                    title: titleController.text,
+                    summary: sumController.text,
+                    urgency: urgenController.text,
+                    due: dueController.text,
+                    isClear: false
+                  ),
+                );
+
                 Get.back();
               },
             ),

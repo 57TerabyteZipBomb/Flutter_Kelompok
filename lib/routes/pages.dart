@@ -1,10 +1,13 @@
+import 'package:flutter_kelompok/bindings/add_binding.dart';
 import 'package:flutter_kelompok/bindings/dash_binding.dart';
+import 'package:flutter_kelompok/bindings/history_binding.dart';
 import 'package:flutter_kelompok/bindings/home_binding.dart';
 import 'package:flutter_kelompok/bindings/listedit_binding.dart';
 import 'package:flutter_kelompok/bindings/login_binding.dart';
 import 'package:flutter_kelompok/pages/dashboard_page.dart';
 import 'package:flutter_kelompok/pages/history_page.dart';
 import 'package:flutter_kelompok/pages/home_page.dart';
+import 'package:flutter_kelompok/pages/listadd_page.dart';
 import 'package:flutter_kelompok/pages/listedit_page.dart';
 import 'package:flutter_kelompok/pages/profile_page.dart';
 import 'package:flutter_kelompok/pages/login_page.dart';
@@ -32,12 +35,17 @@ class AppPages {
     GetPage(
       name: AppRoutes.history,
       page: () => HistoryPage(),
-      binding: MenuBinding(),
+      binding: HistoryBinding(),
     ),
     GetPage(
       name: AppRoutes.listedit,
       page: () => ListEditPage(),
       binding: ListeditBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.listadd,
+      page: () => ListaddPage(),
+      binding: ListAddBinding(),
     ),
   ];
 }
