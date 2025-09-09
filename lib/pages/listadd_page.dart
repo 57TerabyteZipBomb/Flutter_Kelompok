@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_kelompok/componenets/widget_EditButton.dart';
-import 'package:flutter_kelompok/componenets/widget_EditTextField.dart';
 import 'package:flutter_kelompok/controllers/home_controller.dart';
 import 'package:flutter_kelompok/models/todo_models.dart';
 import 'package:get/get.dart';
@@ -54,16 +51,20 @@ class ListaddPage extends StatelessWidget {
               textcolor: Colors.white,
               bgcolor: Colors.blueAccent,
               onPressed: () {
-                editController.addList(
-                  Lists(
-                    title: titleController.text,
-                    summary: sumController.text,
-                    urgency: urgenController.text,
-                    due: dueController.text,
-                    isClear: false,
-                  ),
-                );
-                Get.back();
+                if (titleController.text != "" || urgenController.text != "") {
+                  editController.addList(
+                    Lists(
+                      title: titleController.text,
+                      summary: sumController.text,
+                      urgency: urgenController.text,
+                      due: dueController.text,
+                      isClear: false,
+                    ),
+                  );
+                  Get.back();
+                } else {
+                  //gerrard help
+                }
               },
             ),
           ],

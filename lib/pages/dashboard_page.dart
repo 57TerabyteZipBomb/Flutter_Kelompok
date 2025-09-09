@@ -17,9 +17,13 @@ class DashboardPage extends StatelessWidget {
     return Obx(
       () => Scaffold(
         appBar: AppBar(
-          title: Text("Dashboard", style: TextStyle(fontWeight: FontWeight.bold),),
+          title: Text(
+            "Dashboard",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           centerTitle: true,
-          backgroundColor: Colors.blue,),
+          backgroundColor: Colors.blue,
+        ),
         drawer: Drawer(
           child: ListView(
             children: [
@@ -27,7 +31,7 @@ class DashboardPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.blue,
                   image: DecorationImage(
-                    image: AssetImage('assets/gridbox.png'),
+                    image: AssetImage('assets/hydrogenbomb.png'),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
                       Colors.green.withOpacity(0.5),
@@ -44,7 +48,7 @@ class DashboardPage extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 30,
-                      backgroundImage: AssetImage('assets/gridbox.png'),
+                      backgroundImage: AssetImage('assets/hydrogenbomb.png'),
                     ),
                     SizedBox(height: 10),
                     Text(
@@ -95,7 +99,7 @@ class DashboardPage extends StatelessWidget {
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.black,
           selectedLabelStyle: TextStyle(color: Colors.white),
-          unselectedLabelStyle: TextStyle(color: Colors.white), 
+          unselectedLabelStyle: TextStyle(color: Colors.white),
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.list), label: 'History'),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kelompok/componenets/widget_awesomeCard.dart';
 import 'package:flutter_kelompok/controllers/home_controller.dart';
-import 'package:flutter_kelompok/models/todo_models.dart';
 import 'package:flutter_kelompok/routes/routes.dart';
 import 'package:get/get.dart';
 

@@ -1,7 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_kelompok/models/todo_models.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
+  final TextEditingController txtitle = TextEditingController();
+  final TextEditingController txtsum = TextEditingController();
+  final TextEditingController txturg = TextEditingController();
+  final TextEditingController txtdue = TextEditingController();
+
   //hardcoded initial stuff
   var TodoList = <Lists>[
     Lists(
@@ -34,6 +40,13 @@ class HomeController extends GetxController {
   void addList(Lists list) {
     TodoList.add(list);
   }
+
+  void checker(){
+    if (txtitle.value != ""){
+      //i dont fucking know at this point
+    }
+  }
+
 
   void deleteList(int index) {
     TodoList.removeAt(index);

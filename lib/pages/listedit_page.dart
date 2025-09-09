@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_kelompok/componenets/widget_ButtonNew.dart';
-import 'package:flutter_kelompok/componenets/widget_EditButton.dart';
-import 'package:flutter_kelompok/componenets/widget_EditTextField.dart';
 import 'package:flutter_kelompok/componenets/widget_textfieldNew.dart';
 import 'package:flutter_kelompok/controllers/listedit_controller.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class ListEditPage extends StatelessWidget {
   ListEditPage({super.key});
