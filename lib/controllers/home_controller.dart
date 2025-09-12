@@ -1,14 +1,18 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_kelompok/models/todo_models.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
+  //textfields now use controllers defined here
   final TextEditingController txtitle = TextEditingController();
   final TextEditingController txtsum = TextEditingController();
   final TextEditingController txturg = TextEditingController();
   final TextEditingController txtdue = TextEditingController();
 
-  //hardcoded initial stuff
+  var stattext = "".obs;
+
+  //todolist is stored in here lol
+  //filled with hardcoded stuff
   var TodoList = <Lists>[
     Lists(
       title: "Tugas Mobile Dev",
@@ -33,20 +37,42 @@ class HomeController extends GetxController {
     ),
   ].obs;
 
+  //this is called in listedit_controller
   void updateList(int index, Lists updatePlayer) {
     TodoList[index] = updatePlayer;
   }
 
-  void addList(Lists list) {
-    TodoList.add(list);
-  }
-
-  void checker(){
-    if (txtitle.value != ""){
-      //i dont fucking know at this point
+  //check if empty then add if not
+  void addList() {
+    if (txtitle.text.isEmpty ||
+        txtsum.text.isEmpty ||
+        txturg.text.isEmpty ||
+        txtdue.text.isEmpty) {
+      stattext.value = "All fields must be filled";
+      return;
     }
-  }
 
+    TodoList.add(
+      Lists(
+        title: txtitle.text,
+        summary: txtsum.text,
+        urgency: txturg.text,
+        due: txtdue.text,
+        isClear: false,
+      ),
+    );
+
+
+    stattext.value = "";
+
+    txtitle.clear();
+    txtsum.clear();
+    txturg.clear();
+    txtdue.clear();
+
+    //get.back moved here
+    Get.back();
+  }
 
   void deleteList(int index) {
     TodoList.removeAt(index);

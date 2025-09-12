@@ -11,62 +11,52 @@ class ListEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final titleController = TextEditingController(
-      text: editController.list.value?.title,
-    );
-    final summController = TextEditingController(
-      text: editController.list.value?.summary,
-    );
-    final urgencyController = TextEditingController(
-      text: editController.list.value?.urgency,
-    );
-    final dueController = TextEditingController(
-      text: editController.list.value?.due,
-    );
-
     return Scaffold(
       appBar: AppBar(title: const Text("Edit Task"), centerTitle: true),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16), // consistent spacing
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            //removed on change
+            //now it checks for all the values at once when pressing apply edit
+
             CustomTextField(
-              textEditingController: titleController,
+              textEditingController: editController.txtitle,
               label: 'Title',
-              onChanged: editController.updateTitle,
             ),
             const SizedBox(height: 20),
 
             CustomTextField(
-              textEditingController: summController,
+              textEditingController: editController.txtsum,
               label: 'Summary',
-              onChanged: editController.updateSumm,
             ),
             const SizedBox(height: 20),
 
             CustomTextField(
-              textEditingController: urgencyController,
+              textEditingController: editController.txturg,
               label: 'Urgency',
-              onChanged: editController.updateUrgency,
             ),
             const SizedBox(height: 20),
 
             CustomTextField(
-              textEditingController: dueController,
+              textEditingController: editController.txtdue,
               label: 'Due Date',
-              onChanged: editController.updateDate,
             ),
             const SizedBox(height: 30),
+
+            Obx(
+              () => Text(
+                editController.stattext.value,
+                style: const TextStyle(color: Colors.red),
+              ),
+            ),
 
             CustomButton(
               text: 'Apply Edit',
               textcolor: Colors.white,
               bgcolor: Colors.blueAccent,
-              onPressed: () {
-                editController.saveChanges();
-                Get.back();
-              },
+              onPressed: () => editController.saveChanges(),
             ),
           ],
         ),
