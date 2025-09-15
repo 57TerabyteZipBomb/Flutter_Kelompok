@@ -6,9 +6,9 @@ class HomeController extends GetxController {
   //textfields now use controllers defined here
   final TextEditingController txtitle = TextEditingController();
   final TextEditingController txtsum = TextEditingController();
-  final TextEditingController txturg = TextEditingController();
   final TextEditingController txtdue = TextEditingController();
 
+  var urgency = "".obs;
   var stattext = "".obs;
 
   //todolist is stored in here lol
@@ -17,21 +17,21 @@ class HomeController extends GetxController {
     Lists(
       title: "Tugas Mobile Dev",
       summary: "Project kelompok 2 karakter",
-      urgency: "Not Very",
+      urgency: "Normal",
       due: "16",
       isClear: false,
     ),
     Lists(
       title: "Tugas Game Dev",
       summary: "Project 3D Mockup",
-      urgency: "Not Very",
+      urgency: "Normal",
       due: "8",
       isClear: false,
     ),
     Lists(
       title: "Tugas Bahasa Jepang",
       summary: "Presentasi Interview (Mensetsu)",
-      urgency: "Not Very",
+      urgency: "Low",
       due: "9",
       isClear: false,
     ),
@@ -46,7 +46,7 @@ class HomeController extends GetxController {
   void addList() {
     if (txtitle.text.isEmpty ||
         txtsum.text.isEmpty ||
-        txturg.text.isEmpty ||
+        urgency.value.isEmpty ||
         txtdue.text.isEmpty) {
       stattext.value = "All fields must be filled";
       return;
@@ -56,7 +56,7 @@ class HomeController extends GetxController {
       Lists(
         title: txtitle.text,
         summary: txtsum.text,
-        urgency: txturg.text,
+        urgency: urgency.value,
         due: txtdue.text,
         isClear: false,
       ),
@@ -67,7 +67,7 @@ class HomeController extends GetxController {
 
     txtitle.clear();
     txtsum.clear();
-    txturg.clear();
+    urgency.value = "";
     txtdue.clear();
 
     //get.back moved here

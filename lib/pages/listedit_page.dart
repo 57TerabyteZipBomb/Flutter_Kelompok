@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kelompok/componenets/widget_ButtonNew.dart';
+import 'package:flutter_kelompok/componenets/widget_droppinDown.dart';
 import 'package:flutter_kelompok/componenets/widget_textfieldNew.dart';
 import 'package:flutter_kelompok/controllers/listedit_controller.dart';
 import 'package:get/get.dart';
@@ -20,7 +21,6 @@ class ListEditPage extends StatelessWidget {
           children: [
             //removed on change
             //now it checks for all the values at once when pressing apply edit
-
             CustomTextField(
               textEditingController: editController.txtitle,
               label: 'Title',
@@ -33,9 +33,15 @@ class ListEditPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            CustomTextField(
-              textEditingController: editController.txturg,
-              label: 'Urgency',
+            Obx(
+              () => CustomDropdown(
+                label: "Urgency",
+                value: editController.urgency.value.isEmpty
+                    ? null
+                    : editController.urgency.value,
+                items: const ["Low", "Normal", "High", "Urgent"],
+                onChanged: (val) => editController.urgency.value = val ?? "",
+              ),
             ),
             const SizedBox(height: 20),
 
@@ -44,13 +50,6 @@ class ListEditPage extends StatelessWidget {
               label: 'Due Date',
             ),
             const SizedBox(height: 30),
-
-            Obx(
-              () => Text(
-                editController.stattext.value,
-                style: const TextStyle(color: Colors.red),
-              ),
-            ),
 
             CustomButton(
               text: 'Apply Edit',

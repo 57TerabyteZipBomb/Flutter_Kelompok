@@ -7,13 +7,13 @@ class ListeditController extends GetxController {
   late int index;
   late Rxn<Lists> list;
 
-  final txtitle = TextEditingController();
-  final txtsum = TextEditingController();
-  final txturg = TextEditingController();
-  final txtdue = TextEditingController();
+  final TextEditingController txtitle = TextEditingController();
+  final TextEditingController txtsum = TextEditingController();
+  final TextEditingController txtdue = TextEditingController();
 
   final HomeController listController = Get.find();
 
+  var urgency = "".obs;
   var stattext = "".obs;
 
   @override
@@ -30,7 +30,7 @@ class ListeditController extends GetxController {
       //fill controllers on init, if values are null fill with ""
       txtitle.text = list.value?.title ?? "";
       txtsum.text = list.value?.summary ?? "";
-      txturg.text = list.value?.urgency ?? "";
+      urgency.value = list.value?.urgency ?? "";
       txtdue.text = list.value?.due ?? "";
     } else {
       index = 0;
@@ -42,7 +42,7 @@ class ListeditController extends GetxController {
   void saveChanges() {
     if (txtitle.text.isEmpty ||
         txtsum.text.isEmpty ||
-        txturg.text.isEmpty ||
+        urgency.value.isEmpty ||
         txtdue.text.isEmpty) {
       stattext.value = "All fields must be filled";
       return;
@@ -56,7 +56,7 @@ class ListeditController extends GetxController {
         Lists(
           title: txtitle.text,
           summary: txtsum.text,
-          urgency: txturg.text,
+          urgency: urgency.value,
           due: txtdue.text,
           isClear: list.value!.isClear,
         ),
