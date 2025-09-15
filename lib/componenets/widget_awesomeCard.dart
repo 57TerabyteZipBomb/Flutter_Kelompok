@@ -15,6 +15,21 @@ class AwesomeCard extends StatelessWidget {
     this.onCheck,
   });
 
+  Color urgencyColor(String urgency) {
+    switch (urgency.toLowerCase()) {
+      case "low":
+        return Colors.green;
+      case "normal":
+        return Colors.blue;
+      case "high":
+        return Colors.orange;
+      case "urgent":
+        return Colors.red;
+      default:
+        return Colors.blueAccent;
+    }
+  }
+
   // ya card
   @override
   Widget build(BuildContext context) {
@@ -71,7 +86,7 @@ class AwesomeCard extends StatelessWidget {
                               color: Colors.white,
                             ),
                           ),
-                          backgroundColor: Colors.blueAccent,
+                          backgroundColor: urgencyColor(list.urgency),
                         ),
                         const SizedBox(width: 8),
                         Text(

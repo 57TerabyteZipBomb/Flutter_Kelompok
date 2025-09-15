@@ -17,7 +17,7 @@ class HomeController extends GetxController {
     Lists(
       title: "Tugas Mobile Dev",
       summary: "Project kelompok 2 karakter",
-      urgency: "Normal",
+      urgency: "High",
       due: "16",
       isClear: false,
     ),
