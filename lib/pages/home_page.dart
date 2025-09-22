@@ -12,17 +12,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("My To-do list ong 🙏🙏🙏🥀🥀🥀")),
       body: Container(
         margin: const EdgeInsets.all(10),
         child: Obx(() {
           //image shows depending on if list has stuff or not
           final activeItems = menuController.activeItems;
           if (activeItems.isEmpty) {
-            return Opacity(
-              opacity: 0.5,
-              child: Center(
-                child: Image.asset('assets/mosb.png', width: 500)
+            return Center(
+              child: Text(
+                "No tasks here...\npress + on the bottom right to create a new one",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, color: Colors.grey),
               ),
             );
           }
@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
           );
         }),
       ),
-      
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.toNamed(AppRoutes.listadd);

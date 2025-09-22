@@ -12,51 +12,83 @@ class LoginPage extends StatelessWidget {
     final loginController = Get.find<LoginController>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Login Page",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Colors.blue,
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            // Awesome image
-            Center(
-              child: Image.asset('assets/Slime.png', width: 100, height: 150),
+      backgroundColor: Colors.blue[300],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Card(
+            elevation: 8,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
             ),
-            
-            CustomTextField(textEditingController: loginController.usernameController, label: "Username"),
+            margin: const EdgeInsets.symmetric(horizontal: 24),
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Title with icon
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(Icons.check_circle_outline,
+                          color: Colors.blue, size: 32),
+                      SizedBox(width: 10),
+                      Text(
+                        "To-Do List",
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ],
+                  ),
 
-            const SizedBox(height: 20),
+                  const SizedBox(height: 30),
 
-            CustomTextField(textEditingController: loginController.passwordController, label: "Password", isObscured: true),
+                  // Username field
+                  CustomTextField(
+                    textEditingController: loginController.usernameController,
+                    label: "Username",
+                  ),
 
-            const SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
-            CustomButton(
-              text: "Login",
-              textcolor: Colors.black,
-              onPressed: loginController.login,
-              bgcolor: Colors.blue,
-              cancustomwidth: true,
-              customwidth: 300,
-            ),
+                  // Password field
+                  CustomTextField(
+                    textEditingController: loginController.passwordController,
+                    label: "Password",
+                    isObscured: true,
+                  ),
 
-            const SizedBox(height: 20),
+                  const SizedBox(height: 30),
 
-            // Login message
-            Obx(
-              () => Text(
-                loginController.loginStatus.value,
-                style: TextStyle(fontSize: 16),
+                  // Login button
+                  CustomButton(
+                    text: "Login",
+                    textcolor: Colors.white,
+                    onPressed: loginController.login,
+                    bgcolor: Colors.blue,
+                    cancustomwidth: true,
+                    customwidth: 300,
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  // Login message
+                  Obx(
+                    () => Text(
+                      loginController.loginStatus.value,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

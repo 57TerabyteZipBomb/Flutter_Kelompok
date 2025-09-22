@@ -18,21 +18,21 @@ class HomeController extends GetxController {
       title: "Tugas Mobile Dev",
       summary: "Project kelompok 2 karakter",
       urgency: "High",
-      due: "16",
+      due: "2025-09-25",
       isClear: false,
     ),
     Lists(
       title: "Tugas Game Dev",
       summary: "Project 3D Mockup",
       urgency: "Normal",
-      due: "8",
+      due: "2025-09-27",
       isClear: false,
     ),
     Lists(
       title: "Tugas Bahasa Jepang",
       summary: "Presentasi Interview (Mensetsu)",
       urgency: "Low",
-      due: "9",
+      due: "2025-09-30",
       isClear: false,
     ),
   ].obs;
@@ -61,7 +61,6 @@ class HomeController extends GetxController {
         isClear: false,
       ),
     );
-
 
     stattext.value = "";
 

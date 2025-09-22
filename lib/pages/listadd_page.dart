@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../componenets/widget_ButtonNew.dart';
 import '../componenets/widget_textfieldNew.dart';
+import '../componenets/widget_countYourDays.dart';
 
 class ListaddPage extends StatelessWidget {
   ListaddPage({super.key});
@@ -26,7 +27,7 @@ class ListaddPage extends StatelessWidget {
             ),
 
             const SizedBox(height: 20),
-            
+
             CustomTextField(
               textEditingController: editController.txtsum,
               label: 'Summary',
@@ -47,7 +48,7 @@ class ListaddPage extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            CustomTextField(
+            CustomDatePicker(
               textEditingController: editController.txtdue,
               label: 'Due Date',
             ),
@@ -62,7 +63,7 @@ class ListaddPage extends StatelessWidget {
             ),
 
             const SizedBox(height: 30),
-            
+
             CustomButton(
               text: 'Add new List',
               textcolor: Colors.white,

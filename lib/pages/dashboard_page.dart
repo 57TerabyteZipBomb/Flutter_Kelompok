@@ -11,6 +11,7 @@ class DashboardPage extends StatelessWidget {
   final menuController = Get.find<TodoController>();
 
   final List<Widget> pages = [HomePage(), HistoryPage(), ProfilePage()];
+  final List<String> pagenames = ["Home", "History", "Profile"];
 
   @override
   Widget build(BuildContext context) {
@@ -18,77 +19,14 @@ class DashboardPage extends StatelessWidget {
       () => Scaffold(
         appBar: AppBar(
           title: Text(
-            "Dashboard",
-            style: TextStyle(fontWeight: FontWeight.bold),
+            pagenames[menuController.selectedIndex.value],
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
           ),
           centerTitle: true,
           backgroundColor: Colors.blue,
         ),
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  image: DecorationImage(
-                    image: AssetImage('assets/hydrogenbomb.png'),
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Colors.green.withOpacity(0.5),
-                      BlendMode.dstATop,
-                    ),
-                  ),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('assets/hydrogenbomb.png'),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      'G&G',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                    Text(
-                      '11 PPLG 1',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                  ],
-                ),
-              ),
-              ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Houm'),
-                onTap: () {
-                  menuController.changeTab(0);
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.list),
-                title: Text('History'),
-                onTap: () {
-                  menuController.changeTab(1);
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.person),
-                title: Text('Profile'),
-                onTap: () {
-                  menuController.changeTab(2);
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
-        ),
+
+        // im port ant!!
         body: pages[menuController.selectedIndex.value],
 
         bottomNavigationBar: BottomNavigationBar(
@@ -97,9 +35,9 @@ class DashboardPage extends StatelessWidget {
           currentIndex: menuController.selectedIndex.value,
           onTap: menuController.changeTab,
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.black,
-          selectedLabelStyle: TextStyle(color: Colors.white),
-          unselectedLabelStyle: TextStyle(color: Colors.white),
+          unselectedItemColor: Colors.white70,
+          selectedLabelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          unselectedLabelStyle: TextStyle(color: Colors.white10),
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.list), label: 'History'),

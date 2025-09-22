@@ -11,31 +11,37 @@ class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("List Done")),
-      body: Obx(() {
-        final checkedItems = menuController.checkedItems;
-        if (checkedItems.isEmpty) {
-          return Opacity(
-            opacity: 0.5,
-            child: Center(child: Image.asset('assets/ulkil.png', width: 250)),
-          );
-        }
-        return ListView.builder(
-          itemCount: checkedItems.length,
-          itemBuilder: (context, index) {
-            final item = checkedItems[index];
-            final originalIndex = menuController.TodoList.indexOf(item);
-
-            return AwesomeCard(
-              list: item,
-              onCheck: (value) {
-                menuController.TodoList[originalIndex].isClear = value ?? false;
-                menuController.TodoList.refresh();
-              },
+      body: Container(
+        margin: const EdgeInsets.all(10),
+        child: Obx(() {
+          final checkedItems = menuController.checkedItems;
+          if (checkedItems.isEmpty) {
+            return Center(
+              child: Text(
+                "No completed tasks\n(lazy bum)",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, color: Colors.grey),
+              ),
             );
-          },
-        );
-      }),
+          }
+          return ListView.builder(
+            itemCount: checkedItems.length,
+            itemBuilder: (context, index) {
+              final item = checkedItems[index];
+              final originalIndex = menuController.TodoList.indexOf(item);
+
+              return AwesomeCard(
+                list: item,
+                onCheck: (value) {
+                  menuController.TodoList[originalIndex].isClear =
+                      value ?? false;
+                  menuController.TodoList.refresh();
+                },
+              );
+            },
+          );
+        }),
+      ),
     );
   }
 }

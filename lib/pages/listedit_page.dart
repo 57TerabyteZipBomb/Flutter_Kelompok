@@ -3,6 +3,7 @@ import 'package:flutter_kelompok/componenets/widget_ButtonNew.dart';
 import 'package:flutter_kelompok/componenets/widget_droppinDown.dart';
 import 'package:flutter_kelompok/componenets/widget_textfieldNew.dart';
 import 'package:flutter_kelompok/controllers/listedit_controller.dart';
+import '../componenets/widget_countYourDays.dart';
 import 'package:get/get.dart';
 
 class ListEditPage extends StatelessWidget {
@@ -45,7 +46,7 @@ class ListEditPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            CustomTextField(
+            CustomDatePicker(
               textEditingController: editController.txtdue,
               label: 'Due Date',
             ),

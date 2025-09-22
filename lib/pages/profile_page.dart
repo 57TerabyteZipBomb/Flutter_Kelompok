@@ -6,7 +6,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Team Members"), centerTitle: true),
+      appBar: AppBar(title: const Text("Our Team"), centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -122,25 +122,6 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
-            const SizedBox(height: 20),
-
-            SizedBox(
-              width: null,
-              child: Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    'assets/ishowspeed-ohio.png',
-                    width: 200,
-                    height: 200,
-                  ),
-                ),
-              ),
             ),
           ],
         ),
