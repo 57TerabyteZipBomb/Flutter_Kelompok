@@ -10,7 +10,7 @@ class SplashscreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Container(child: Image.asset('assets/gridbox.png'))),
+      body: Center(child: Container(child: Image.asset('assets/oguwi.gif'))),
     );
   }
 }
