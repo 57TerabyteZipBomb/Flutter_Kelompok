@@ -32,7 +32,7 @@ class HomeController extends GetxController {
       title: "Tugas Bahasa Jepang",
       summary: "Presentasi Interview (Mensetsu)",
       urgency: "Low",
-      due: "2025-09-30",
+      due: "2025-09-01",
       isClear: false,
     ),
   ].obs;
