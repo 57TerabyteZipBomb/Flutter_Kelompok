@@ -34,10 +34,13 @@ class HomePage extends StatelessWidget {
 
               return AwesomeCard(
                 list: list,
-                onCheck: (value) {
+                onCheck: (value) async {
                   menuController.TodoList[originalIndex].isClear =
                       value ?? false;
-                  menuController.TodoList.refresh();
+                  await menuController.updateList(
+                    originalIndex,
+                    menuController.TodoList[originalIndex],
+                  );
                 },
                 onTap: () {
                   Get.toNamed(

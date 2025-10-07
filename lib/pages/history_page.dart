@@ -32,10 +32,13 @@ class HistoryPage extends StatelessWidget {
 
               return AwesomeCard(
                 list: item,
-                onCheck: (value) {
+                onCheck: (value) async {
                   menuController.TodoList[originalIndex].isClear =
                       value ?? false;
-                  menuController.TodoList.refresh();
+                  await menuController.updateList(
+                    originalIndex,
+                    menuController.TodoList[originalIndex],
+                  );
                 },
               );
             },
