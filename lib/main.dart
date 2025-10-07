@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: "the fluttering",
       theme: ThemeData(primarySwatch: Colors.blue),
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.splash,
+      initialRoute: AppRoutes.login,
     );
   }
 }

@@ -6,5 +6,4 @@ class AppRoutes {
   static const String history = "/history";
   static const String listedit = "/listedit";
   static const String listadd = "/listadd";
-  static const String splash = "/splashscreen";
 }
