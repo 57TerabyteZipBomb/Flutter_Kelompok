@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
       body: Container(
         margin: const EdgeInsets.all(10),
         child: Obx(() {
-          //image shows depending on if list has stuff or not
+          //text shows depending on if list has stuff or not
           final activeItems = menuController.activeItems;
           if (activeItems.isEmpty) {
             return Center(
