@@ -1,0 +1,9 @@
+import 'package:flutter_kelompok/controllers/login_controller.dart';
+import 'package:get/get.dart';
+
+class ProfileBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.put(LoginController());
+  }
+}
