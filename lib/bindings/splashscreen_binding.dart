@@ -1,9 +1,0 @@
-import 'package:flutter_kelompok/controllers/splashscreen_contoller.dart';
-import 'package:get/get.dart';
-
-class SplashscreenBinding extends Bindings {
-  @override
-  void dependencies() {
-    Get.lazyPut<SplashscreenContoller>(() => SplashscreenContoller());
-  }
-}

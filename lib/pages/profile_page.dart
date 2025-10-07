@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kelompok/componenets/widget_ButtonNew.dart';
-import 'package:flutter_kelompok/controllers/login_controller.dart';
-import 'package:get/get.dart';
 
 class ProfilePage extends StatelessWidget {
-  ProfilePage({super.key});
-
-  final loginController = Get.find<LoginController>();
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +12,6 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CustomButton(
-              onPressed: () {
-                loginController.logout();
-              },
-              text: "very not-obviously put LOGOUT button",
-            ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
