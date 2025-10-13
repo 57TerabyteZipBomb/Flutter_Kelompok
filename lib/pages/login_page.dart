@@ -14,7 +14,8 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blue[300],
       body: Center(
-        child: SingleChildScrollView(
+        child: SizedBox(
+          width: 450,
           child: Card(
             elevation: 8,
             shape: RoundedRectangleBorder(
