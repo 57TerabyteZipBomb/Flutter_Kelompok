@@ -16,7 +16,11 @@ class ListaddPage extends StatelessWidget {
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
-          controller.updateLayout(constraints);
+          // ✅ Safe: delay reactive mutation until after build
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            controller.updateLayout(constraints);
+          });
+
           return Obx(
             () => controller.isMobile.value
                 ? MobileListaddPage()
@@ -27,3 +31,4 @@ class ListaddPage extends StatelessWidget {
     );
   }
 }
+

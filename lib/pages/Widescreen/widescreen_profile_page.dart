@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kelompok/componenets/widget_ButtonNew.dart';
-import 'package:flutter_kelompok/componenets/widget_sickmembercard';
+import 'package:flutter_kelompok/componenets/widget_sickmembercard.dart';
 import 'package:flutter_kelompok/controllers/login_controller.dart';
 import 'package:get/get.dart';
 

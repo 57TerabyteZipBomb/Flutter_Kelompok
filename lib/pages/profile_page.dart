@@ -15,7 +15,9 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
-          controller.updateLayout(constraints);
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            controller.updateLayout(constraints);
+          });
           return Obx(
             () => controller.isMobile.value
                 ? MobileProfilePage()

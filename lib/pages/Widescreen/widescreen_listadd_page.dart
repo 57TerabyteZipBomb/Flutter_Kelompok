@@ -6,101 +6,94 @@ import 'package:flutter_kelompok/componenets/widget_textfieldNew.dart';
 import 'package:flutter_kelompok/controllers/home_controller.dart';
 import 'package:get/get.dart';
 
-class WidescreenListaddPage extends StatefulWidget {
+class WidescreenListaddPage extends StatelessWidget {
   const WidescreenListaddPage({super.key});
 
   @override
-  State<WidescreenListaddPage> createState() => _WidescreenListaddPageState();
-}
+  Widget build(BuildContext context) {
+    final editController = Get.find<HomeController>();
 
-class _WidescreenListaddPageState extends State<WidescreenListaddPage> {
-  final editController = Get.find<HomeController>();
-
-  @override
-  void initState() {
-    super.initState();
-
-    // ✅ Safe post-build initialization
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (editController.urgency.value.isEmpty) {
-        editController.urgency.value = "Normal";
-      }
-      editController.stattext.value = ""; // Clear any leftover error
-    });
-  }
-
- @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(title: const Text("Add List"), centerTitle: true),
-    body: Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 900),
-        child: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Card(
-            elevation: 6,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-            child: Padding(
-              padding: const EdgeInsets.all(32),
-              child: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(title: const Text("Add List"), centerTitle: true),
+      body: Center(
+        widthFactor: 500,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1000),
+          child: Padding(
+            padding: const EdgeInsets.all(32),
+            child: Card(
+              elevation: 6,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              child: Padding(
+                padding: const EdgeInsets.all(32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const Text(
-                      "Create New List",
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      "Create a New Task List",
+                      style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: 30),
-                    Wrap(
-                      spacing: 24,
-                      runSpacing: 24,
+                    const SizedBox(height: 40),
+
+                    // Two-column layout
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          width: 400,
-                          child: CustomTextField(
-                            textEditingController: editController.txtitle,
-                            label: 'List Title',
+                        // Left column
+                        Expanded(
+                          child: Column(
+                            children: [
+                              CustomTextField(
+                                textEditingController: editController.txtitle,
+                                label: 'List Title',
+                              ),
+                              const SizedBox(height: 24),
+                              CustomTextField(
+                                textEditingController: editController.txtsum,
+                                label: 'Summary',
+                              ),
+                            ],
                           ),
                         ),
-                        SizedBox(
-                          width: 400,
-                          child: CustomTextField(
-                            textEditingController: editController.txtsum,
-                            label: 'Summary',
-                          ),
-                        ),
-                        SizedBox(
-                          width: 400,
-                          child: Obx(() => CustomDropdown(
-                                label: "Urgency",
-                                value: editController.urgency.value.isEmpty
-                                    ? null
-                                    : editController.urgency.value,
-                                items: const ["Low", "Normal", "High", "Urgent"],
-                                onChanged: (val) => editController.urgency.value = val ?? "",
-                              )),
-                        ),
-                        SizedBox(
-                          width: 400,
-                          child: CustomDatePicker(
-                            textEditingController: editController.txtdue,
-                            label: 'Due Date',
+
+                        const SizedBox(width: 32),
+
+                        // Right column
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Obx(() => CustomDropdown(
+                                    label: "Urgency",
+                                    value: editController.urgency.value.isEmpty
+                                        ? null
+                                        : editController.urgency.value,
+                                    items: const ["Low", "Normal", "High", "Urgent"],
+                                    onChanged: (val) => editController.urgency.value = val ?? "",
+                                  )),
+                              const SizedBox(height: 24),
+                              CustomDatePicker(
+                                textEditingController: editController.txtdue,
+                                label: 'Due Date',
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
 
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 30),
+
+                    // Error message
                     Obx(() => Text(
                           editController.stattext.value,
                           style: const TextStyle(color: Colors.red),
                           textAlign: TextAlign.center,
                         )),
+
                     const SizedBox(height: 30),
 
-
+                    // Submit button
                     Align(
                       alignment: Alignment.center,
                       child: SizedBox(
@@ -120,7 +113,6 @@ Widget build(BuildContext context) {
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 }
