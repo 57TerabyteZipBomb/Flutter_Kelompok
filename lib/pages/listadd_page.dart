@@ -1,34 +1,26 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter_kelompok/controllers/sizechecker_controller.dart';
 import 'package:flutter_kelompok/pages/Mobile/mobile_listadd_page.dart';
 import 'package:flutter_kelompok/pages/Widescreen/widescreen_listadd_page.dart';
-import 'package:get/get.dart';
-
 
 class ListaddPage extends StatelessWidget {
   ListaddPage({super.key});
 
-  final controller = Get.find<SizecheckerController>();
+  // Breakpoint: under this width we show the mobile layout
+  static const double mobileBreakpoint = 600;
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
-          // ✅ Safe: delay reactive mutation until after build
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            controller.updateLayout(constraints);
-          });
+          final width = constraints.maxWidth;
+          final isMobile = width < mobileBreakpoint;
 
-          return Obx(
-            () => controller.isMobile.value
-                ? MobileListaddPage()
-                : WidescreenListaddPage(),
-          );
+          // Choose the proper page directly from constraints so changes are immediate
+          return isMobile ? MobileListaddPage() : WidescreenListaddPage();
         },
       ),
     );
   }
 }
-
